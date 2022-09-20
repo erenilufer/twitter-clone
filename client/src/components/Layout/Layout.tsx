@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import RightBar from "../RightBar/RightBar";
 import SideNavigation from "../SideNavigation/SideNavigation";
 
 type Props = {
@@ -12,9 +13,7 @@ const Layout = (props: Props) => {
       <div className="max-w-lg w-full border-x border-[#38444d]">
         {props.children}
       </div>
-      <div className=" lg:block hidden w-80 border-x border-[#38444d] ">
-        <div className="sticky top-2 text-white ">RightBar</div>
-      </div>
+      <RightBar />
     </div>
   );
 };
