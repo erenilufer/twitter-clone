@@ -6,10 +6,14 @@ import {
   ChatBubbleOvalLeftIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
+import { TweetModel } from "../../models/TweetModel";
 
-interface Props {}
+interface Props {
+  tweet: TweetModel;
+}
 
 const Tweet = (props: Props) => {
+  const { tweet } = props;
   return (
     <div className="p-4  text-white border-b-[.5px] border-b-[#38444d] cursor-pointer hover:bg-[#1E2934] duration-200">
       <div className="flex gap-4 items-center ">
@@ -21,14 +25,14 @@ const Tweet = (props: Props) => {
           <Link to={"/erenilufer"}>
             <div className="flex items-center gap-2 ">
               <h1 className="font-bold text-xs hover:underline">
-                Eren Nilüfer
+                {tweet?.authorName}
               </h1>
               <p className="text-xs text-[#8B98A5]">@erenilufer</p>
             </div>
           </Link>
 
           <div>
-            <p className="text-xs font-semibold">Bu bir uzun bir tweettir</p>
+            <p className="text-xs font-semibold"> {tweet?.textContent}</p>
           </div>
         </div>
       </div>
@@ -37,14 +41,14 @@ const Tweet = (props: Props) => {
           <div className="w-7 h-7   flex items-center justify-center    ">
             <ChatBubbleOvalLeftIcon className="w-5 h-5 group-hover:text-sky-500 " />
           </div>
-          <span className="text-xs">52</span>
+          <span className="text-xs"> {tweet?.comments.length}</span>
         </div>
         <div className="flex items-center gap-1 group rounded-xl duration-200 px-2 hover:bg-teal-900">
           <div className="w-7 h-7   flex items-center justify-center     ">
             <ArrowPathRoundedSquareIcon className="w-5 h-5 group-hover:text-teal-500 duration-200" />
           </div>
           <span className="text-xs group-hover:text-teal-500 duration-200">
-            12
+            {tweet?.retweets}
           </span>
         </div>
         <div className="flex items-center gap-1 group rounded-xl duration-200 px-2  ">
@@ -52,7 +56,7 @@ const Tweet = (props: Props) => {
             <HeartIcon className="w-5 h-5 group-hover:fill-red-500  group-hover:text-red-500 duration-200" />
           </div>
           <span className="text-xs group-hover:text-red-500 duration-200">
-            12
+            {tweet?.likes}
           </span>
         </div>
 
