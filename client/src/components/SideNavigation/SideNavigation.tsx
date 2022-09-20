@@ -1,10 +1,11 @@
+import stockImage from "../../assets/stock2.jpeg";
 interface Props {}
 
 const SideNavigation = (props: Props) => {
   // TODO: Dynamic structure and svg component will be added
   return (
-    <div className=" mx-2  text-[#f7f9f9]">
-      <div className="sticky top-2 flex flex-col md:items-start items-end">
+    <div className="flex flex-col  justify-between sticky h-screen top-2 mx-2 pb-5  text-[#f7f9f9]">
+      <div className="flex flex-col md:items-start items-end">
         <div className="  mt-2 hover:bg-[#404951] duration-200 cursor-pointer  p-3  rounded-3xl w-fit">
           <svg
             fill="#f7f9f9"
@@ -141,6 +142,15 @@ const SideNavigation = (props: Props) => {
               <path d="M8.8 7.2H5.6V3.9c0-.4-.3-.8-.8-.8s-.7.4-.7.8v3.3H.8c-.4 0-.8.3-.8.8s.3.8.8.8h3.3v3.3c0 .4.3.8.8.8s.8-.3.8-.8V8.7H9c.4 0 .8-.3.8-.8s-.5-.7-1-.7zm15-4.9v-.1h-.1c-.1 0-9.2 1.2-14.4 11.7-3.8 7.6-3.6 9.9-3.3 9.9.3.1 3.4-6.5 6.7-9.2 5.2-1.1 6.6-3.6 6.6-3.6s-1.5.2-2.1.2c-.8 0-1.4-.2-1.7-.3 1.3-1.2 2.4-1.5 3.5-1.7.9-.2 1.8-.4 3-1.2 2.2-1.6 1.9-5.5 1.8-5.7z"></path>
             </g>
           </svg>
+        </div>
+      </div>
+      <div className="  flex gap-2 items-center justify-center px-1 py-2 rounded-full hover:bg-[#404951] duration-200 cursor-pointer   ">
+        <div className="img inline-block overflow-hidden  w-8  h-8 rounded-full">
+          <img className="w-full h-auto" src={stockImage} alt="" />
+        </div>
+        <div className="hidden md:block">
+          <h1 className="font-bold text-xs  ">Eren Nilüfer</h1>
+          <p className="text-xs text-[#8B98A5]">@erenilufer</p>
         </div>
       </div>
     </div>
