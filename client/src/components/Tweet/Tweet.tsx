@@ -36,7 +36,7 @@ const Tweet = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between md:px-14 px-5  mt-3 text-[#8B98A5]">
+      <div className="flex justify-between md:px-10   gap-5 mt-3 text-[#8B98A5]">
         <div className="flex items-center gap-1 group hover:bg-sky-900 rounded-xl duration-200 px-2 ">
           <div className="w-7 h-7   flex items-center justify-center    ">
             <ChatBubbleOvalLeftIcon className="w-5 h-5 group-hover:text-sky-500 " />
