@@ -23,7 +23,7 @@ const Tweet = (props: Props) => {
 
         <div className="textContent flex flex-col gap-1 flex-1 ">
           <Link to={"/erenilufer"}>
-            <div className="flex items-center gap-2 ">
+            <div className="flex items-center gap-1 ">
               <h1 className="font-bold text-xs hover:underline">
                 {tweet?.authorName}
               </h1>
