@@ -1,13 +1,13 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   createTweet,
   deleteTweet,
   getTweets,
-} from "../controllers/tweetController.js";
+} = require("../controllers/tweetController.js");
 
 const router = express.Router();
 
 router.post("/tweets/createTweet", createTweet);
 router.get("/tweets", getTweets);
 router.delete("/tweets/:id", deleteTweet);
-export default router;
+module.exports = router;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema(
@@ -15,8 +15,19 @@ const tweetSchema = new Schema(
     imageContent: {
       type: String,
     },
+    likes: {
+      type: Number,
+      default: 0,
+    },
+    comments: {
+      type: Array,
+      default: [],
+    },
+    retweets: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
-
-export const Tweet = mongoose.model("Tweet", tweetSchema);
+module.exports = mongoose.model("Tweet", tweetSchema);

@@ -1,12 +1,13 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import authRoutes from "./src/routes/authRoutes.js";
-import tweetRoutes from "./src/routes/tweetRoutes.js";
-import userRoutes from "./src/routes/userRoutes.js";
-import cors from "cors";
-import multer from "multer";
-import { authTokenMiddleware } from "./src/middlewares/authTokenMiddleware.js";
+const express = require("express");
+const mongoose = require("mongoose");
+
+const dotenv = require("dotenv");
+const authRoutes = require("./src/routes/authRoutes.js");
+const tweetRoutes = require("./src/routes/tweetRoutes.js");
+const userRoutes = require("./src/routes/userRoutes.js");
+const cors = require("cors");
+const multer = require("multer");
+const authTokenMiddleware = require("./src/middlewares/authTokenMiddleware.js");
 
 const app = express();
 const port = 3001;

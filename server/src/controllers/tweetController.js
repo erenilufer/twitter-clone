@@ -1,6 +1,6 @@
-import { Tweet } from "../models/tweet.js";
+const Tweet = require("../models/tweet.js");
 
-export const createTweet = async (req, res) => {
+const createTweet = async (req, res) => {
   try {
     const tweet = Tweet({
       authorName: req.body.authorName,
@@ -12,8 +12,26 @@ export const createTweet = async (req, res) => {
     res.status(500).json(err);
   }
 };
+const updateTweet = async (req, res) => {
+  if (req.params.id === req.body.id) {
+    const tweet = await Tweet.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    try {
+      res.status(200).json(tweet);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(401).json({ message: "Unauthorized" });
+  }
+};
 
-export const getTweets = async (req, res) => {
+const getTweets = async (req, res) => {
   const tweets = await Tweet.find();
   try {
     res.status(200).json(tweets);
@@ -21,7 +39,7 @@ export const getTweets = async (req, res) => {
     res.status(500).json(err);
   }
 };
-export const deleteTweet = async (req, res) => {
+const deleteTweet = async (req, res) => {
   try {
     const tweet = await Tweet.findByIdAndDelete(req.params.id);
     if (!tweet) {
@@ -33,4 +51,10 @@ export const deleteTweet = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+};
+module.exports = {
+  getTweets,
+  createTweet,
+  deleteTweet,
+  updateTweet,
 };
