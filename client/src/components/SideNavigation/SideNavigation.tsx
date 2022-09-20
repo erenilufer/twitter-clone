@@ -1,7 +1,12 @@
 import stockImage from "../../assets/stock2.jpeg";
-interface Props {}
+interface Props {
+  isModalVisible: boolean;
+  setIsModalVisible: any;
+}
 
 const SideNavigation = (props: Props) => {
+  const { isModalVisible, setIsModalVisible } = props;
+
   // TODO: Dynamic structure and svg component will be added
   return (
     <div className="flex flex-col  justify-between sticky h-screen top-2 mx-2 pb-5  text-[#f7f9f9]">
@@ -128,7 +133,12 @@ const SideNavigation = (props: Props) => {
             <h1 className="font-semibold hidden md:block">More</h1>
           </div>
         </div>
-        <div className="p-3   w-full bg-[#1d9bf0] hover:bg-[#1a8cd8] duration-200 rounded-full cursor-pointer ">
+        <div
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+          className="p-3   w-full bg-[#1d9bf0] hover:bg-[#1a8cd8] duration-200 rounded-full cursor-pointer "
+        >
           <h1 className=" hidden md:block text-center font-extrabold text-sm ">
             Tweet
           </h1>
