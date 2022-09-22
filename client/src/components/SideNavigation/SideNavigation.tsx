@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import stockImage from "../../assets/stock2.jpeg";
 interface Props {
   isModalVisible: boolean;
@@ -24,7 +25,10 @@ const SideNavigation = (props: Props) => {
           </svg>
         </div>
         <div className="sideNav flex flex-col   gap-1 mb-4">
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer    p-3 rounded-3xl  ">
+          <Link
+            to={"/"}
+            className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer    p-3 rounded-3xl  "
+          >
             <svg
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -36,7 +40,7 @@ const SideNavigation = (props: Props) => {
               </g>
             </svg>
             <h1 className="font-extrabold hidden md:block">Home</h1>
-          </div>
+          </Link>
           <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
@@ -103,7 +107,10 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Lists</h1>
           </div>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <Link
+            to={"/erenilufer"}
+            className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl"
+          >
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -115,7 +122,7 @@ const SideNavigation = (props: Props) => {
               </g>
             </svg>
             <h1 className="font-semibold hidden md:block">Profile</h1>
-          </div>
+          </Link>
           <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import Profile from "./pages/Profile/Profile";
 interface Props {}
 
 const Router = (props: Props) => {
@@ -11,6 +12,7 @@ const Router = (props: Props) => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:username" element={<Profile />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Layout>

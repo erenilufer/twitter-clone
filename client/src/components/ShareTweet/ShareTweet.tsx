@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createTweet } from "../../api/tweet";
 import stockImage from "../../assets/stock2.jpeg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type Props = {
   setIsModalVisible?: any;
@@ -12,11 +14,16 @@ const ShareTweet = (props: Props) => {
 
   const tweetHandler = () => {
     textContent !== ""
-      ? createTweet({ authorName: "erenilufer", textContent }).then(() => {
-          setTextContent("");
-          setIsModalVisible(false);
-        })
-      : alert("Enter a tweet message");
+      ? createTweet({ authorName: "erenilufer", textContent })
+          .then(() => {
+            toast.success("Tweet successfully published!");
+            setTextContent("");
+            setIsModalVisible(false);
+          })
+          .catch((err) => {
+            err.code && toast.error(err.message);
+          })
+      : toast.warn("Enter a tweet message");
   };
   return (
     <form className="flex flex-col">
@@ -34,11 +41,15 @@ const ShareTweet = (props: Props) => {
       </div>
       <button
         type="submit"
-        onClick={tweetHandler}
+        onClick={(e) => {
+          e.preventDefault();
+          tweetHandler();
+        }}
         className="self-end bg-[#1d9bf0] hover:bg-[#1a8cd8 text-white px-3 py-2 rounded-full font-bold text-sm "
       >
         Tweet
       </button>
+      <ToastContainer theme="colored" position="bottom-right" />
     </form>
   );
 };
