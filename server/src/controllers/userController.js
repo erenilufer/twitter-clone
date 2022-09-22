@@ -1,5 +1,17 @@
 const User = require("../models/user.js");
 
+const getOneUser = async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ code: 404, message: "User not Found" });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 const updateUser = async (req, res) => {
   if (req.params.id === req.body.id) {
     try {
@@ -33,4 +45,5 @@ const deleteUser = async (req, res) => {
 module.exports = {
   updateUser,
   deleteUser,
+  getOneUser,
 };
