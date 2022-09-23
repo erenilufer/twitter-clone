@@ -30,13 +30,13 @@ const TweetModal = (props: Props) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="max-w-lg -mt-10 mx-5 w-full  bg-[#15202B] flex flex-col border border-[#38444d] rounded-2xl p-5 "
+        className="max-w-lg -mt-10 mx-5 w-full  bg-[#15202B] flex flex-col border border-grey rounded-2xl p-5 "
       >
         <div className="text-white flex justify-between items-center mb-5 ">
           <h1 className="text-lg font-extrabold">Share a Tweet</h1>
           <XCircleIcon
             onClick={() => setIsModalVisible(false)}
-            className="w-8 h-8 cursor-pointer  text-[#8B98A5] hover:text-white duration-200"
+            className="w-8 h-8 cursor-pointer  text-greyLighter hover:text-white duration-200"
           />
         </div>
         <div className="flex flex-col ">

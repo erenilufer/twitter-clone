@@ -22,7 +22,7 @@ const Layout = (props: Props) => {
           setIsModalVisible={setIsModalVisible}
         />
       )}
-      <div className="max-w-lg w-full border-x border-[#38444d]">
+      <div className="max-w-lg w-full border-x border-grey">
         {props.children}
       </div>
       <RightBar />

@@ -34,7 +34,7 @@ const ShareTweet = (props: Props) => {
         <input
           value={textContent}
           onChange={(e) => setTextContent(e.target.value)}
-          className="focus:outline-none text-white font-bold flex-1 p-1 bg-transparent"
+          className="bg-primary focus:outline-none text-white font-bold flex-1 p-1 bg-transparent"
           type="text"
           placeholder="What's happening?"
         />
@@ -45,7 +45,7 @@ const ShareTweet = (props: Props) => {
           e.preventDefault();
           tweetHandler();
         }}
-        className="self-end bg-[#1d9bf0] hover:bg-[#1a8cd8 text-white px-3 py-2 rounded-full font-bold text-sm "
+        className="self-end bg-blue hover:bg-blueDarker text-white px-3 py-2 rounded-full font-bold text-sm "
       >
         Tweet
       </button>

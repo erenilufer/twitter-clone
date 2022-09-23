@@ -19,9 +19,9 @@ const Feed = (props: Props) => {
   return (
     <>
       {isLoading ? (
-        <CogIcon className="mt-3 w-8 h-8   mx-auto  text-[#8B98A5] animate-spin" />
+        <CogIcon className="mt-3 w-8 h-8   mx-auto  text-greyLighter animate-spin " />
       ) : (
-        <div>
+        <div className="">
           {tweets &&
             tweets.map((tweet: TweetModel) => (
               <Tweet key={tweet._id} tweet={tweet} />

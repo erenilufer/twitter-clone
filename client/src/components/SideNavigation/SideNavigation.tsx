@@ -10,9 +10,9 @@ const SideNavigation = (props: Props) => {
 
   // TODO: Dynamic structure and svg component will be added
   return (
-    <div className="flex flex-col  justify-between sticky h-screen top-2 mx-2 pb-5  text-[#f7f9f9]">
+    <div className="flex flex-col  justify-between sticky h-screen top-0 mx-2 pb-5  text-white">
       <div className="flex flex-col md:items-start items-end">
-        <div className="  mt-2 hover:bg-[#404951] duration-200 cursor-pointer  p-3  rounded-3xl w-fit">
+        <div className="   hover:bg-grey duration-200 cursor-pointer  p-3  rounded-3xl w-fit">
           <svg
             fill="#f7f9f9"
             viewBox="0 0 24 24"
@@ -27,7 +27,7 @@ const SideNavigation = (props: Props) => {
         <div className="sideNav flex flex-col   gap-1 mb-4">
           <Link
             to={"/"}
-            className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer    p-3 rounded-3xl  "
+            className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer    p-3 rounded-3xl  "
           >
             <svg
               viewBox="0 0 24 24"
@@ -41,7 +41,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-extrabold hidden md:block">Home</h1>
           </Link>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -54,7 +54,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Explore</h1>
           </div>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -67,7 +67,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Notifications</h1>
           </div>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -80,7 +80,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Messages</h1>
           </div>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Bookmarks</h1>
           </div>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -109,7 +109,7 @@ const SideNavigation = (props: Props) => {
           </div>
           <Link
             to={"/erenilufer"}
-            className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl"
+            className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl"
           >
             <svg
               fill="#f7f9f9"
@@ -123,7 +123,7 @@ const SideNavigation = (props: Props) => {
             </svg>
             <h1 className="font-semibold hidden md:block">Profile</h1>
           </Link>
-          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-[#404951] duration-200 cursor-pointer  p-3 rounded-3xl">
+          <div className="w-fit sideitem flex items-center  gap-3 hover:bg-grey duration-200 cursor-pointer  p-3 rounded-3xl">
             <svg
               fill="#f7f9f9"
               viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ const SideNavigation = (props: Props) => {
           onClick={() => {
             setIsModalVisible(true);
           }}
-          className="p-3   w-full bg-[#1d9bf0] hover:bg-[#1a8cd8] duration-200 rounded-full cursor-pointer "
+          className="p-3   w-full bg-blue hover:bg-blueDarker duration-200 rounded-full cursor-pointer "
         >
           <h1 className=" hidden md:block text-center font-extrabold text-sm ">
             Tweet
@@ -161,13 +161,13 @@ const SideNavigation = (props: Props) => {
           </svg>
         </div>
       </div>
-      <div className="  flex gap-2 items-center justify-center px-1 py-2 rounded-full hover:bg-[#404951] duration-200 cursor-pointer   ">
+      <div className="  flex gap-2 items-center justify-center px-1 py-2 rounded-full hover:bg-grey duration-200 cursor-pointer   ">
         <div className="img inline-block overflow-hidden  w-8  h-8 rounded-full">
           <img className="w-full h-auto" src={stockImage} alt="" />
         </div>
         <div className="hidden md:block">
           <h1 className="font-bold text-xs  ">Eren Nilüfer</h1>
-          <p className="text-xs text-[#8B98A5]">@erenilufer</p>
+          <p className="text-xs text-greyLighter">@erenilufer</p>
         </div>
       </div>
     </div>
