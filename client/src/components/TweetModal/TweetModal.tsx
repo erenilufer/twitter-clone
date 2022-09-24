@@ -1,5 +1,6 @@
-import { LockClosedIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { XCircleIcon } from "@heroicons/react/24/outline";
 import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 import ShareTweet from "../ShareTweet/ShareTweet";
 
 interface Props {
@@ -10,20 +11,17 @@ interface Props {
 const TweetModal = (props: Props) => {
   const { isModalVisible, setIsModalVisible } = props;
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
-
-  useEffect(
-    () => () => {
-      document.body.style.overflow = "unset"; // Cleanup
-    },
-    []
-  );
+    isModalVisible
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "unset");
+  }, [isModalVisible]);
 
   const closeHandler = () => {
     setIsModalVisible(false);
   };
-  return (
+  if (!isModalVisible) return <></>;
+
+  return createPortal(
     <div
       onClick={closeHandler}
       className="fixed z-10 w-full h-full bg-opacity-20 backdrop-blur-lg flex justify-center items-center "
@@ -43,7 +41,8 @@ const TweetModal = (props: Props) => {
           <ShareTweet setIsModalVisible={setIsModalVisible} />
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("layout")!
   );
 };
 
