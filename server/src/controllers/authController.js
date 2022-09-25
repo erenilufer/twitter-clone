@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({
-      name: req.body.name,
+      email: req.body.email,
     });
 
     if (!user) {
@@ -33,10 +33,10 @@ const loginUser = async (req, res) => {
     if (!comparePassword)
       return res.status(400).json({ code: 400, message: "wrong password" });
 
-    const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id:user._id }, process.env.JWT_SECRET, {
       expiresIn: "20s",
     });
-    return res.status(200).json({ accessToken: token });
+    return res.status(200).json({ user,accessToken: token });
   } catch (err) {
     console.log(err);
     res.json({ error: { message: "Server Did not Respond", code: 500 } });
@@ -47,6 +47,10 @@ const loginUser = async (req, res) => {
 
   // POST
 };
+const refreshToken=(req,res)=>{
+  const refreshToken=req.body.token;
+
+}
 module.exports = {
   registerUser,
   loginUser,

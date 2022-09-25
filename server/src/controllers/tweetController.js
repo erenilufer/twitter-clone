@@ -52,9 +52,21 @@ const deleteTweet = async (req, res) => {
     res.status(500).json(err);
   }
 };
+const getUsersTweets = async (req, res) => {
+  const tweets = await Tweet.find({ authorName: req.params.authorName });
+  try {
+    if (!tweets) {
+      return res.status(404).json({ code: 404, message: "No tweets found" });
+    }
+    res.status(200).json(tweets);
+  } catch (err) {
+    res.status(500).json({ code: 500, message: "Server did not respond" });
+  }
+};
 module.exports = {
   getTweets,
   createTweet,
   deleteTweet,
   updateTweet,
+  getUsersTweets,
 };
