@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { registerUser } from "../../api/user";
-
+import { registerUser } from "../../redux/api/user";
+ 
 type Props = {};
 
 const Register = (props: Props) => {

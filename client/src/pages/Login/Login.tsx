@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginUser } from "../../api/user";
+import { loginUser } from "../../redux/api/user";
+import { AppDispatch, RootState } from "../../redux/store";
 
 interface Props {}
 
 const Login = (props: Props) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useSelector((state: RootState) => state.auth.user);
+  console.log(user);
+  // Spinner will be added
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
   const submitHandler = () => {
-    loginUser(loginForm);
+    dispatch(loginUser(loginForm));
   };
   return (
     <div className=" flex justify-center items-center mx-8    h-screen ">
@@ -42,7 +47,7 @@ const Login = (props: Props) => {
             onChange={(e) => {
               setLoginForm({ ...loginForm, email: e.target.value });
             }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Email"
             type="text"
           />
@@ -51,20 +56,20 @@ const Login = (props: Props) => {
             onChange={(e) => {
               setLoginForm({ ...loginForm, password: e.target.value });
             }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Password"
             type="password"
           />
           <button
-            className="text-black bg-white px-4 py-2 rounded-full font-bold w-full text-sm hover:bg-[#D7DBDC] duration-200"
+            className="text-black bg-white px-4 py-2 rounded-full font-bold w-full text-sm hover:bg-whiteDarker duration-200"
             type="submit"
           >
             Sign In
           </button>
         </form>
-        <p className="text-[#71767B] text-xs">
+        <p className="text-greyLighter text-xs">
           Don't have an account?{" "}
-          <Link to={"/register"} className="text-[#1B9BD0] hover:underline">
+          <Link to={"/register"} className="text-blueDarker hover:underline">
             Sign Up
           </Link>
         </p>
