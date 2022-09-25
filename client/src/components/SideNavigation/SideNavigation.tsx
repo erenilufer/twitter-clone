@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import stockImage from "../../assets/stock2.jpeg";
-interface Props {
-  isModalVisible: boolean;
-  setIsModalVisible: any;
-}
+import TweetModal from "../TweetModal/TweetModal";
+interface Props {}
 
 const SideNavigation = (props: Props) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const navItems = [
     {
       name: "Home",
@@ -118,7 +119,7 @@ const SideNavigation = (props: Props) => {
           </g>
         </svg>
       ),
-      path: "/erenilufer",
+      path: "/user/erenilufer",
     },
     {
       name: "More",
@@ -140,7 +141,6 @@ const SideNavigation = (props: Props) => {
       path: "/more",
     },
   ];
-  const { isModalVisible, setIsModalVisible } = props;
 
   // TODO: Dynamic structure and svg component will be added
   return (
@@ -195,7 +195,10 @@ const SideNavigation = (props: Props) => {
           </svg>
         </div>
       </div>
-      <div className="  flex gap-2 items-center justify-center px-1 py-2 rounded-full hover:bg-grey duration-200 cursor-pointer   ">
+      <Link
+        to={"/user/erenilufer"}
+        className="  flex gap-2 items-center justify-center px-1 py-2 rounded-full hover:bg-grey duration-200 cursor-pointer   "
+      >
         <div className="img inline-block overflow-hidden  w-8  h-8 rounded-full">
           <img className="w-full h-auto" src={stockImage} alt="" />
         </div>
@@ -203,7 +206,8 @@ const SideNavigation = (props: Props) => {
           <h1 className="font-bold text-xs  ">Eren Nilüfer</h1>
           <p className="text-xs text-greyLighter">@erenilufer</p>
         </div>
-      </div>
+      </Link>
+      <TweetModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
     </div>
   );
 };

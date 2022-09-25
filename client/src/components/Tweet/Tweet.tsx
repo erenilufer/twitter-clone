@@ -22,12 +22,12 @@ const Tweet = (props: Props) => {
         </div>
 
         <div className="textContent flex flex-col gap-1 flex-1 ">
-          <Link to={"/erenilufer"}>
+          <Link to={"/user/" + tweet.authorName}>
             <div className="flex items-center gap-1 ">
               <h1 className="font-bold text-xs hover:underline">
                 {tweet?.authorName}
               </h1>
-              <p className="text-xs text-greyLighter">@erenilufer</p>
+              <p className="text-xs text-greyLighter">@{tweet.authorName}</p>
             </div>
           </Link>
 
