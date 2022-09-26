@@ -161,6 +161,7 @@ const SideNavigation = (props: Props) => {
         <div className="sideNav flex flex-col   gap-1 mb-4">
           {navItems.map((item) => (
             <NavLink
+              key={item.name}
               end
               to={item.path}
               className={({ isActive }) =>
@@ -207,7 +208,10 @@ const SideNavigation = (props: Props) => {
           <p className="text-xs text-greyLighter">@erenilufer</p>
         </div>
       </Link>
-      <TweetModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
+      <TweetModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      />
     </div>
   );
 };

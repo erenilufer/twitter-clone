@@ -14,9 +14,10 @@ export const getOneUser = async (username: string) => {
 };
 
 export const createTweet = async (credentials: any) => {
-  const { authorName, textContent } = credentials;
+  const { authorName, authorUsername, textContent } = credentials;
   await axios.post("http://localhost:3001/tweets/createTweet", {
     authorName,
+    authorUsername,
     textContent,
   });
 };

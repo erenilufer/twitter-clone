@@ -11,10 +11,17 @@ type Props = {
 const ShareTweet = (props: Props) => {
   const { setIsModalVisible } = props;
   const [textContent, setTextContent] = useState("");
-
+  const buttonDisabled =
+    "self-end bg-blue  opacity-60 text-white px-3 py-2 rounded-full font-bold text-sm ";
+  const buttonActive =
+    "self-end bg-blue hover:bg-blueDarker text-white px-3 py-2 rounded-full font-bold text-sm";
   const tweetHandler = () => {
     textContent !== ""
-      ? createTweet({ authorName: "erenilufer", textContent })
+      ? createTweet({
+          authorName: "Eren Nilüfer",
+          authorUsername: "erenilufer",
+          textContent,
+        })
           .then(() => {
             toast.success("Tweet successfully published!");
             setTextContent("");
@@ -45,7 +52,8 @@ const ShareTweet = (props: Props) => {
           e.preventDefault();
           tweetHandler();
         }}
-        className="self-end bg-blue hover:bg-blueDarker text-white px-3 py-2 rounded-full font-bold text-sm "
+        disabled={textContent === ""}
+        className={textContent === "" ? buttonDisabled : buttonActive}
       >
         Tweet
       </button>

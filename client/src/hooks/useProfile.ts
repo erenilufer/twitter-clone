@@ -18,7 +18,7 @@ export const useProfile = (username: string) => {
     getUsersTweets(username)
       .then((data) => {
         setIsLoading(false);
-        setTweets(data.data);
+        setTweets(data.data.reverse());
       })
       .catch((err) => setTweets(null));
   }, [username]);

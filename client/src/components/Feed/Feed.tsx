@@ -12,10 +12,12 @@ const Feed = (props: Props) => {
   useEffect(() => {
     setIsLoading(true);
     getTweets().then((data) => {
-      setTweets(data.data);
+      setTweets(data.data.reverse());
       setIsLoading(false);
     });
   }, []);
+  console.log(tweets);
+
   return (
     <>
       {isLoading ? (

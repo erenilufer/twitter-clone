@@ -1,5 +1,6 @@
 export interface TweetModel {
   authorName: string;
+  authorUsername: string;
   comments: any[];
   createdAt: string;
   likes: number;

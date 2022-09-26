@@ -22,12 +22,14 @@ const Tweet = (props: Props) => {
         </div>
 
         <div className="textContent flex flex-col gap-1 flex-1 ">
-          <Link to={"/user/" + tweet.authorName}>
+          <Link to={"/user/" + tweet.authorUsername}>
             <div className="flex items-center gap-1 ">
               <h1 className="font-bold text-xs hover:underline">
                 {tweet?.authorName}
               </h1>
-              <p className="text-xs text-greyLighter">@{tweet.authorName}</p>
+              <p className="text-xs text-greyLighter">
+                @{tweet.authorUsername}
+              </p>
             </div>
           </Link>
 
@@ -60,9 +62,9 @@ const Tweet = (props: Props) => {
           </span>
         </div>
 
-        <div className="flex items-center gap-1 group rounded-full duration-200 px-2 hover:bg-sky-900  ">
+        <div className="flex items-center gap-1 group rounded-full duration-200 px-2 hover:bg-skyDarker  ">
           <div className="w-7 h-7 flex items-center justify-center    duration-200">
-            <ArrowUpTrayIcon className="w-5 h-5 group-hover:text-sky-500" />
+            <ArrowUpTrayIcon className="w-5 h-5 group-hover:text-sky" />
           </div>
         </div>
       </div>
