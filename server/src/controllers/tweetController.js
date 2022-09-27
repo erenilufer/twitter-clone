@@ -4,6 +4,7 @@ const createTweet = async (req, res) => {
   try {
     const tweet = Tweet({
       authorName: req.body.authorName,
+      authorUsername: req.body.authorUsername,
       textContent: req.body.textContent,
     });
     const newTweet = await tweet.save();
@@ -53,7 +54,10 @@ const deleteTweet = async (req, res) => {
   }
 };
 const getUsersTweets = async (req, res) => {
-  const tweets = await Tweet.find({ authorName: req.params.authorName });
+  console.log(req.params.authorUsername);
+  const tweets = await Tweet.find({
+    authorUsername: req.params.authorUsername,
+  });
   try {
     if (!tweets) {
       return res.status(404).json({ code: 404, message: "No tweets found" });

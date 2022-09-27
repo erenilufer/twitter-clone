@@ -7,7 +7,10 @@ const tweetSchema = new Schema(
       type: String,
       required: true,
     },
-
+    authorUsername: {
+      type: String,
+      required: true,
+    },
     textContent: {
       type: String,
       required: true,
