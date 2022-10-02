@@ -7,4 +7,5 @@ export interface UserModel {
   followers: number;
   following: number;
   _id: string;
+  createdAt: string;
 }
