@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import RightBar from "../RightBar/RightBar";
 import SideNavigation from "../SideNavigation/SideNavigation";
 
@@ -10,7 +10,7 @@ const Layout = (props: Props) => {
   return (
     <div
       id="layout"
-      className="flex relative justify-center md:mx-auto max-w-5xl "
+      className="flex relative justify-center md:mx-auto max-w-5xl"
     >
       <SideNavigation />
       <div className="max-w-lg w-full border-x border-grey">

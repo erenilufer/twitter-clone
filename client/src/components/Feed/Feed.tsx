@@ -4,9 +4,7 @@ import { getTweets } from "../../api/tweet";
 import { TweetModel } from "../../models/TweetModel";
 import Tweet from "../Tweet/Tweet";
 
-interface Props {}
-
-const Feed = (props: Props) => {
+const Feed = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [tweets, setTweets] = useState<TweetModel[]>();
   useEffect(() => {
@@ -21,9 +19,9 @@ const Feed = (props: Props) => {
   return (
     <>
       {isLoading ? (
-        <CogIcon className="mt-3 w-8 h-8   mx-auto  text-greyLighter animate-spin " />
+        <CogIcon className="mt-3 w-36 h-36   mx-auto  text-greyLighter animate-spin " />
       ) : (
-        <div className="">
+        <div>
           {tweets &&
             tweets.map((tweet: TweetModel) => (
               <Tweet key={tweet._id} tweet={tweet} />

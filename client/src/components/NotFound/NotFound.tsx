@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const NotFound = (props: Props) => {
+const NotFound = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen w-full self-center">
       <p className="text-white text-center text-3xl font-extrabold">

@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { createTweet } from "../../api/tweet";
-import stockImage from "../../assets/stock2.jpeg";
 import ShareTweet from "../ShareTweet/ShareTweet";
 
 interface Props {}

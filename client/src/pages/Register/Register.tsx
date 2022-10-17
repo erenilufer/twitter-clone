@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import { CogIcon } from "@heroicons/react/24/outline";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Toast from "../../helpers/Toast";
 import { registerUser } from "../../redux/api/user";
- 
+import { AppDispatch, RootState } from "../../redux/store";
+
 type Props = {};
 
 const Register = (props: Props) => {
-  const [registerForm, setRegisterForm] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-  });
-  console.log(registerForm);
+  const dispatch = useDispatch<AppDispatch>();
+  const loadingState = useSelector(
+    (state: RootState) => state.auth.loadingState
+  );
+
+  const name = useRef<HTMLInputElement>(null!);
+  const username = useRef<HTMLInputElement>(null!);
+  const email = useRef<HTMLInputElement>(null!);
+  const password = useRef<HTMLInputElement>(null!);
+
+  const isFormValid = () => {
+    if (
+      email.current?.value &&
+      name.current?.value &&
+      username.current?.value &&
+      password.current?.value
+    ) {
+      return true;
+    }
+    return false;
+  };
   const submitHandler = () => {
-    registerUser(registerForm);
+    if (!isFormValid()) {
+      return Toast("Error", "Please fill all blanks!");
+    }
+    dispatch(
+      registerUser({
+        name: name.current.value,
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      })
+    );
   };
   return (
     <div className=" flex justify-center items-center mx-8    h-screen">
@@ -38,46 +66,38 @@ const Register = (props: Props) => {
           action=""
         >
           <input
-            value={registerForm.name}
-            onChange={(e) => {
-              setRegisterForm({ ...registerForm, name: e.target.value });
-            }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            ref={name}
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Name"
             type="text"
           />
           <input
-            value={registerForm.username}
-            onChange={(e) => {
-              setRegisterForm({ ...registerForm, username: e.target.value });
-            }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            ref={username}
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Username"
             type="text"
           />{" "}
           <input
-            value={registerForm.email}
-            onChange={(e) => {
-              setRegisterForm({ ...registerForm, email: e.target.value });
-            }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            ref={email}
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Email"
             type="text"
           />{" "}
           <input
-            value={registerForm.password}
-            onChange={(e) => {
-              setRegisterForm({ ...registerForm, password: e.target.value });
-            }}
-            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-slate-600 border outline-slate-600"
+            ref={password}
+            className="text-white bg-transparent focus:outline-none rounded-md  p-1 px-2 border-grey border  "
             placeholder="Password"
             type="password"
           />
           <button
-            className="text-black bg-white px-4 py-2 rounded-full font-bold w-full text-sm hover:bg-[#D7DBDC] duration-200"
+            className="flex justify-center text-black bg-white px-4 py-2 rounded-full font-bold w-full text-sm hover:bg-[#D7DBDC] duration-200"
             type="submit"
           >
-            Sign Up
+            {loadingState === "pending" ? (
+              <CogIcon className="w-5 h-5 animate-spin" />
+            ) : (
+              <p>Sign Up</p>
+            )}
           </button>
         </form>
         <p className="text-[#71767B] text-xs">

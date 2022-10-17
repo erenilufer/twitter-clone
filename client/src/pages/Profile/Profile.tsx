@@ -1,26 +1,30 @@
+import { CalendarIcon } from "@heroicons/react/24/outline";
+import moment from "moment";
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import stockImage from "../../assets/stock2.jpeg";
 import Loader from "../../components/Loader/Loader";
 import Tweet from "../../components/Tweet/Tweet";
 import UpdateUserModal from "../../components/UpdateUserModal/UpdateUserModal";
 import useProfile from "../../hooks/useProfile";
 import { TweetModel } from "../../models/TweetModel";
+import { RootState } from "../../redux/store";
 type Props = {};
 const Profile = (props: Props) => {
-  const top = useRef<any>(null);
+  const top = useRef<HTMLDivElement>(null);
   const { username } = useParams();
 
   const [isModalVisible, setIsModalVisible] = useState<any>(false);
-
+  const currentUser = useSelector((state: RootState) => state.auth.user);
   const { user, tweets, isLoading } = useProfile(username!);
+  const date = moment(user?.createdAt).format("ll");
 
   useEffect(() => {
     const scrollToTop = () => {
       top?.current?.scrollIntoView();
     };
     scrollToTop();
-  }, []);
+  }, [tweets]);
 
   if (isLoading) {
     return <Loader />;
@@ -45,19 +49,22 @@ const Profile = (props: Props) => {
           />
 
           <div className="top text-white">
-            <div className="bg-[#425364] h-52"></div>
-            <div className="userinfo flex justify-between px-3">
+            <div className="bg-[#425364] md:h-48 h-36"></div>
+            <div className="userinfo flex justify-between items-start  px-3">
               <div className="-mt-14">
-                <div className="img  inline-block overflow-hidden w-28 h-28 rounded-full">
-                  <img className="w-full h-auto" src={stockImage} alt="" />
-                </div>
+                {/*                   <img className="w-full h-auto" src={user.image} alt="" />
+                 */}{" "}
+                <img
+                  className="object-cover w-28 h-28 rounded-full mb-2"
+                  src={user.image}
+                  alt=""
+                />
                 <h1 className="font-extrabold">{user?.name} </h1>
                 <p className="text-xs text-[#8B98A5]">@{user?.username}</p>
-
-                <p className="text-xs text-[#8B98A5] py-1">
-                  Joined March 2020{" "}
+                <p className="flex items-center text-xs text-[#8B98A5] py-1">
+                  <CalendarIcon className="w-4 h-4 mr-1 " />
+                  {`Joined ${date}`}
                 </p>
-
                 <div className="flex gap-4">
                   <p className="text-xs font-bold text-white mt-1 hover:underline cursor-pointer">
                     {user?.following}
@@ -75,14 +82,19 @@ const Profile = (props: Props) => {
                   </p>
                 </div>
               </div>
-              <div>
-                <button
-                  onClick={() => setIsModalVisible(true)}
-                  className="py-2 px-3  hover:bg-[#404951] border border-[#38444d] text-xs font-semibold mt-2 rounded-2xl duration-200"
-                >
-                  Set up profile
-                </button>
-              </div>
+              {currentUser?._id === user._id && (
+                <div>
+                  <button
+                    onClick={() => setIsModalVisible(true)}
+                    className="py-2 px-3   hover:bg-[#404951] border border-[#38444d] text-xs font-semibold mt-2 rounded-2xl duration-200"
+                  >
+                    Edit profile
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="mt-2 px-3">
+              <p className="text-xs">{user.bio}</p>
             </div>
             <div className="flex    w-full mt-5 border-b border-b-[#38444d] ">
               <div className=" w-full flex items-center justify-center p-1 py-3 hover:bg-[#404951] duration-200 cursor-pointer">

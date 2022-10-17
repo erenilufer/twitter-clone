@@ -1,16 +1,13 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import React from "react";
 
-type Props = {};
-
-const RightBar = (props: Props) => {
+const RightBar = () => {
   return (
     <div className="lg:block hidden flex-1 ml-3 ">
       <div className="sticky top-2 text-white ">
         <div className="relative flex items-center  bg-greyDarker p-2 rounded-2xl mb-4 ">
           <MagnifyingGlassIcon className="w-5 h-5 absolute text-greyLighter " />
           <input
-            className="bg-transparent pl-7  focus:outline-none text-white text-sm font-semibold flex-1  bg-transparent"
+            className="bg-transparent pl-7  focus:outline-none text-white text-sm font-semibold flex-1  "
             type="text"
             placeholder="Search Twitter"
           />

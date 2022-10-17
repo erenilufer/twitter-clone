@@ -1,0 +1,9 @@
+.navItem {
+  @apply w-fit flex items-center gap-3 hover:bg-grey cursor-pointer p-3 rounded-3xl;
+}
+.active {
+  @apply font-extrabold;
+}
+.inactive {
+  @apply font-semibold;
+}
