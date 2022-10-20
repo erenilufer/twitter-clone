@@ -1,14 +1,18 @@
-const express = require("express");
-const {
+import express from "express";
+
+import {
   createTweet,
   deleteTweet,
   getTweets,
   getUsersTweets,
-} = require("../controllers/tweetController.js");
+  updateTweet,
+} from "../controllers/tweetController.js";
 
 const router = express.Router();
-router.get("/tweets/:authorUsername", getUsersTweets);
+router.get("/tweets/:authorID", getUsersTweets);
 router.post("/tweets/createTweet", createTweet);
 router.get("/tweets", getTweets);
+router.put("/tweets/:authorID", updateTweet);
 router.delete("/tweets/:id", deleteTweet);
-module.exports = router;
+
+export default router;

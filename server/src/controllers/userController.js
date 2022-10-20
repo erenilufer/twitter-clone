@@ -1,6 +1,6 @@
-const User = require("../models/user.js");
+import User from "../models/user.js";
 
-const getOneUser = async (req, res) => {
+export const getOneUser = async (req, res) => {
   const { username } = req.params;
   try {
     const user = await User.findOne({ username });
@@ -12,7 +12,7 @@ const getOneUser = async (req, res) => {
     res.status(500).json(err);
   }
 };
-const updateUser = async (req, res) => {
+export const updateUser = async (req, res) => {
   if (req.params.id === req.body.id) {
     try {
       const user = await User.findByIdAndUpdate(
@@ -30,7 +30,7 @@ const updateUser = async (req, res) => {
     res.status(401).json({ message: "Unauthorized" });
   }
 };
-const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res) => {
   if (req.params.id === req.body.id) {
     try {
       const user = await User.findByIdAndDelete(req.params.id);
@@ -42,8 +42,4 @@ const deleteUser = async (req, res) => {
     res.status(401).json({ message: "Unauthorized" });
   }
 };
-module.exports = {
-  updateUser,
-  deleteUser,
-  getOneUser,
-};
+ 

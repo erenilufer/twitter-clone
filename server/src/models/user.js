@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose  from "mongoose";
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
@@ -12,6 +12,7 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
+
     password: {
       type: String,
       required: true,
@@ -21,6 +22,10 @@ const userSchema = new Schema(
       required: true,
     },
     image: {
+      type: String,
+      default: "http://localhost:3001/images/DEFAULT.jpeg",
+    },
+    bio: {
       type: String,
       default: "",
     },
@@ -36,4 +41,4 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+export default mongoose.model("User", userSchema);

@@ -1,7 +1,7 @@
-const User = require("../models/user.js");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const registerUser = async (req, res) => {
+import User from "../models/user.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+export const registerUser = async (req, res) => {
   try {
     const salt = await bcrypt.genSalt();
     const encryptedPassword = await bcrypt.hash(req.body.password, salt);
@@ -14,10 +14,10 @@ const registerUser = async (req, res) => {
     const newUser = await user.save();
     res.status(200).json(newUser);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ error: { code: 500, message: "Server Error" } });
   }
 };
-const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({
       email: req.body.email,
@@ -31,12 +31,12 @@ const loginUser = async (req, res) => {
       user.password
     );
     if (!comparePassword)
-      return res.status(400).json({ code: 400, message: "wrong password" });
+      return res.json({
+        error: { code: 400, message: "Password is not correct!" },
+      });
 
-    const token = jwt.sign({ id:user._id }, process.env.JWT_SECRET, {
-      expiresIn: "20s",
-    });
-    return res.status(200).json({ user,accessToken: token });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    return res.status(200).json({ user, accessToken: token });
   } catch (err) {
     console.log(err);
     res.json({ error: { message: "Server Did not Respond", code: 500 } });
@@ -47,11 +47,6 @@ const loginUser = async (req, res) => {
 
   // POST
 };
-const refreshToken=(req,res)=>{
-  const refreshToken=req.body.token;
-
-}
-module.exports = {
-  registerUser,
-  loginUser,
+const refreshToken = (req, res) => {
+  const refreshToken = req.body.token;
 };

@@ -1,13 +1,9 @@
-const express = require("express");
-const {
-  deleteUser,
-  updateUser,
-  getOneUser,
-} = require("../controllers/userController.js");
+import express from "express";
+import { updateUser, getOneUser } from "../controllers/userController.js";
 
 const router = express.Router();
 
 router.get("/user/:username", getOneUser);
-router.put("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
-module.exports = router;
+router.put("/user/:id", updateUser); //authTokenMiddleware
+
+export default router;

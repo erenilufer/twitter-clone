@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose  from "mongoose";
 const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema(
@@ -10,6 +10,13 @@ const tweetSchema = new Schema(
     authorUsername: {
       type: String,
       required: true,
+    },
+    authorID: {
+      type: String,
+      required: true,
+    },
+    authorImage: {
+      type: String,
     },
     textContent: {
       type: String,
@@ -33,4 +40,4 @@ const tweetSchema = new Schema(
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Tweet", tweetSchema);
+export default mongoose.model("Tweet", tweetSchema);
