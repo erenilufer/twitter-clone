@@ -15,7 +15,7 @@ const Tweet = (props: Props) => {
   const { tweet } = props;
   return (
     <div className="p-4  text-white border-b-[.5px] border-b-grey cursor-pointer hover:bg-greyDarker duration-200">
-      <div className="flex gap-4 items-center ">
+      <div className="flex gap-4">
         <img
           className="object-cover w-10  h-10 rounded-full"
           src={tweet.authorImage}

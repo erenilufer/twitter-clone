@@ -36,17 +36,14 @@ export const loginUser = async (req, res) => {
       });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    return res.status(200).json({ user, accessToken: token });
+    const { password, ...rest } = user._doc;
+    return res.status(200).json({ user: rest, accessToken: token });
   } catch (err) {
-    console.log(err);
     res.json({ error: { message: "Server Did not Respond", code: 500 } });
   }
-
-  const params = req.body;
-  console.log(params);
-
-  // POST
 };
+
+/* TODO */
 const refreshToken = (req, res) => {
   const refreshToken = req.body.token;
 };

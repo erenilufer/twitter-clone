@@ -9,8 +9,8 @@ import UpdateUserModal from "../../components/UpdateUserModal/UpdateUserModal";
 import useProfile from "../../hooks/useProfile";
 import { TweetModel } from "../../models/TweetModel";
 import { RootState } from "../../redux/store";
-type Props = {};
-const Profile = (props: Props) => {
+
+const Profile = () => {
   const top = useRef<HTMLDivElement>(null);
   const { username } = useParams();
 
@@ -43,17 +43,17 @@ const Profile = (props: Props) => {
         </div>
       ) : (
         <>
-          <UpdateUserModal
-            isModalVisible={isModalVisible}
-            setIsModalVisible={setIsModalVisible}
-          />
+          {isModalVisible && (
+            <UpdateUserModal
+              isModalVisible={isModalVisible}
+              setIsModalVisible={setIsModalVisible}
+            />
+          )}
 
           <div className="top text-white">
             <div className="bg-[#425364] md:h-48 h-36"></div>
             <div className="userinfo flex justify-between items-start  px-3">
               <div className="-mt-14">
-                {/*                   <img className="w-full h-auto" src={user.image} alt="" />
-                 */}{" "}
                 <img
                   className="object-cover w-28 h-28 rounded-full mb-2"
                   src={user.image}
@@ -121,7 +121,7 @@ const Profile = (props: Props) => {
           </div>
           <div>
             {tweets?.map((tweet: TweetModel) => (
-              <Tweet tweet={tweet} />
+              <Tweet key={tweet._id} tweet={tweet} />
             ))}
           </div>
         </>

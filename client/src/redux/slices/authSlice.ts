@@ -24,11 +24,9 @@ export const authSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
-      console.log(action.payload);
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     logoutUser: (state, action) => {
-      console.log(state);
       state.user = null;
       localStorage.removeItem("user");
       localStorage.removeItem("token");
@@ -47,9 +45,7 @@ export const authSlice = createSlice({
         state.loadingState = "idle";
         if (action.payload?.error) {
           state.error = action.payload.error;
-          console.log(state.error);
         } else {
-          console.log(action.payload);
           state.user = action.payload;
           state.error = null;
           localStorage.setItem("user", JSON.stringify(action.payload));
@@ -69,7 +65,6 @@ export const authSlice = createSlice({
         registerUser.fulfilled,
         (state: AuthState, action: any) => {
           state.loadingState = "idle";
-          console.log(action.payload);
         }
       );
   },

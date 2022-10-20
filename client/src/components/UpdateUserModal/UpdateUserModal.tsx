@@ -33,7 +33,6 @@ const UpdateUserModal = (props: Props) => {
   const [bio, setBio] = useState(user?.bio);
   const [email, setEmail] = useState(user?.email);
   const [file, setFile] = useState<any>(null);
-  console.log(file);
 
   useEffect(() => {
     setPage(0);
@@ -41,19 +40,15 @@ const UpdateUserModal = (props: Props) => {
       ? (document.body.style.overflow = "hidden")
       : (document.body.style.overflow = "unset");
   }, [isModalVisible]);
-  console.log(isModalVisible);
 
   useEffect(() => {
     const formData = new FormData();
     file && formData.append("file", file, user?._id);
-    console.log(formData);
 
     file &&
       axios
         .post("http://localhost:3001/upload/image", formData, {})
         .then((res) => {
-          console.log(res);
-          // eslint-disable-next-line no-restricted-globals
           // eslint-disable-next-line no-restricted-globals
           location.reload();
         });
@@ -67,7 +62,6 @@ const UpdateUserModal = (props: Props) => {
       authorName: user?.name,
       authorUsername: user?.username,
     });
-    console.log("asdsa");
   }, [file]);
 
   const onSubmit = (e: any) => {

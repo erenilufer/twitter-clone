@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
@@ -10,7 +12,14 @@ import { RootState } from "./redux/store";
 
 const Router = () => {
   const user = useSelector((state: RootState) => state.auth.user);
-
+  const token = JSON.parse(localStorage.getItem("token")!)?.accessToken;
+  useEffect(() => {
+    if (user) {
+      axios.defaults.headers.common = {
+        Authorization: "Bearer " + token,
+      };
+    }
+  }, [token]);
   return (
     <>
       {!user ? (

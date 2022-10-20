@@ -17,7 +17,6 @@ const PORT = process.env.PORT;
 connectToDatabase();
 
 // Routes
-
 app.use(routes);
 
 app.get("/", (req, res) => {

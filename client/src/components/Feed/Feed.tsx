@@ -14,7 +14,6 @@ const Feed = () => {
       setIsLoading(false);
     });
   }, []);
-  console.log(tweets);
 
   return (
     <>

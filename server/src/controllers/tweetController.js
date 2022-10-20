@@ -16,7 +16,6 @@ export const createTweet = async (req, res) => {
   }
 };
 export const updateTweet = async (req, res) => {
-  console.log(req.body);
   try {
     await Tweet.updateMany(
       { authorID: req.params.authorID },
@@ -25,7 +24,6 @@ export const updateTweet = async (req, res) => {
       },
       { new: true }
     );
-    console.log("tweet");
 
     return res.status(200).json({ message: "success" });
   } catch (err) {
@@ -56,7 +54,6 @@ export const deleteTweet = async (req, res) => {
   }
 };
 export const getUsersTweets = async (req, res) => {
-  console.log(req.params.authorUsername);
   const tweets = await Tweet.find({
     authorID: req.params.authorID,
   });

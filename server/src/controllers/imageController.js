@@ -8,8 +8,6 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname + ".jpeg");
-    /*     cb(null, file.originalname + "." + file.mimetype.split("/")[1]);  Image name will be setted
-     */ console.log(file);
   },
 });
 const upload = multer({ storage: storage });
